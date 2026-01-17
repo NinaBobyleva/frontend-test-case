@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setLoading, setProducts } from "../../store/store";
 import { useEffect, useState } from "react";
 import { FilterAndSearch } from "../FilterAndSearch/FilterAndSearch.jsx";
 import { ProductListItem } from "../ProductListItem/ProductListItem.jsx";
 import "./productList.css";
+import { selectLoading, selectProducts } from "../../store/store.js";
+import { setLoading, setProducts } from "../../store/features/productsSlice.js";
 
 export function ProductList() {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.app.products);
-  // console.log(products);
-  const loading = useSelector((state) => state.app.loading);
+  const products = useSelector(selectProducts);
+  const loading = useSelector(selectLoading);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -88,8 +88,6 @@ export function ProductList() {
       if (sortBy === "price") return a.price - b.price;
       return 0;
     });
-
-    console.log(filteredProducts);
 
   if (loading) {
     return <div className="loading">Загрузка товаров...</div>;

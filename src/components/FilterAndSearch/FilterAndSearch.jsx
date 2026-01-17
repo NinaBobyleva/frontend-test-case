@@ -1,14 +1,14 @@
 import { useState } from "react";
 import "./filterAndSearch.css";
 
-export function FilterAndSearch(
+export function FilterAndSearch({
   setSortBy,
   setSelectedCategory,
   setSearchTerm,
   searchTerm,
   selectedCategory,
-  sortBy
-) {
+  sortBy,
+}) {
   const [showFilters, setShowFilters] = useState(false);
 
   const handleSearchChange = (e) => {

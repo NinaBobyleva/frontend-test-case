@@ -12,7 +12,7 @@ export function ProductListItem({product}) {
       <div className="price">${product.price}</div>
       <button
         onClick={() => {
-          const action = { type: "app/addToCart", payload: product };
+          const action = { type: "cart/addToCart", payload: product };
           dispatch(action);
         }}
       >
