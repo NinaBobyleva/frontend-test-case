@@ -1,26 +1,31 @@
 import { useState } from 'react';
 import './filterAndSearch.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCategory, selectSearchTerm, selectSort } from '../../store/store';
 
-export function FilterAndSearch({
-  setSortBy,
-  setSelectedCategory,
-  setSearchTerm,
-  searchTerm,
-  selectedCategory,
-  sortBy,
-}) {
+export function FilterAndSearch() {
+  const dispatch = useDispatch();
+  const category = useSelector(selectCategory);
+  const sort = useSelector(selectSort);
+  const searchTerm = useSelector(selectSearchTerm);
   const [showFilters, setShowFilters] = useState(false);
 
   const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
+    const value = e.target.value;
+    if (value.trim() === "") {
+      dispatch({type: "products/resetFilters"});
+    } else {
+      dispatch({type: "products/setFilters", payload: {searchTerm: value}});
+    }
   };
 
-  const handleCategoryChange = (e) => {
-    setSelectedCategory(e.target.value);
-  };
-
-  const handleSortChange = (e) => {
-    setSortBy(e.target.value);
+  const handleFilters = (e) => {
+    const value = e.target.value;
+    if (value === "phones" || value === "laptops" || value === "tablets" || value === "all") {
+      dispatch({type: "products/setFilters", payload: {category: value}});
+    } else if (value === "name" || value === "price") {
+      dispatch({type: "products/setFilters", payload: {sort: value}});
+    }
   };
 
   return (
@@ -35,14 +40,14 @@ export function FilterAndSearch({
       </div>
 
       <div className="filter-controls">
-        <select value={selectedCategory} onChange={handleCategoryChange}>
+        <select value={category} onChange={handleFilters}>
           <option value="all">Все категории</option>
           <option value="phones">Телефоны</option>
           <option value="laptops">Ноутбуки</option>
           <option value="tablets">Планшеты</option>
         </select>
 
-        <select value={sortBy} onChange={handleSortChange}>
+        <select value={sort} onChange={handleFilters}>
           <option value="name">По названию</option>
           <option value="price">По цене</option>
         </select>
