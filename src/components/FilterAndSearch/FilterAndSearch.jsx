@@ -1,5 +1,5 @@
-import { useState } from "react";
-import "./filterAndSearch.css";
+import { useState } from 'react';
+import './filterAndSearch.css';
 
 export function FilterAndSearch({
   setSortBy,
@@ -48,7 +48,7 @@ export function FilterAndSearch({
         </select>
 
         <button onClick={() => setShowFilters(!showFilters)}>
-          {showFilters ? "Скрыть фильтры" : "Показать фильтры"}
+          {showFilters ? 'Скрыть фильтры' : 'Показать фильтры'}
         </button>
       </div>
     </div>

@@ -1,8 +1,8 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import "./header.css";
-import { selectUser } from "../../store/store";
-import { setUser } from "../../store/features/userSlice.js";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import './header.css';
+import { selectUser } from '../../store/store';
+import { setUser } from '../../store/features/userSlice.js';
 
 export function Header() {
   const dispatch = useDispatch();
@@ -13,8 +13,8 @@ export function Header() {
       dispatch(
         setUser({
           id: 1,
-          name: "Иван Иванов",
-          email: "ivan@example.com",
+          name: 'Иван Иванов',
+          email: 'ivan@example.com',
         })
       );
     }, 500);

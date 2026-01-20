@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import "./cart.css";
-import { selectCart, selectCartCount, selectTotalPrice } from "../../store/store";
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import './cart.css';
+import { selectCart, selectCartCount, selectTotalPrice } from '../../store/store';
 
 export function Cart() {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ export function Cart() {
   const [showCheckout, setShowCheckout] = useState(false);
 
   const handleRemoveItem = (id) => {
-    dispatch({ type: "cart/removeFromCart", payload: id });
+    dispatch({ type: 'cart/removeFromCart', payload: id });
   };
 
   const handleUpdateQuantity = (id, quantity) => {
@@ -21,14 +21,14 @@ export function Cart() {
       handleRemoveItem(id);
       return;
     }
-    dispatch({ type: "cart/updateQuantity", payload: { id, quantity } });
+    dispatch({ type: 'cart/updateQuantity', payload: { id, quantity } });
   };
 
   const handleCheckout = () => {
     setShowCheckout(true);
     setTimeout(() => {
-      alert("Заказ оформлен!");
-      dispatch({ type: "cart/clearCart" });
+      alert('Заказ оформлен!');
+      dispatch({ type: 'cart/clearCart' });
       setShowCheckout(false);
       setIsOpen(false);
     }, 1000);
@@ -93,7 +93,7 @@ export function Cart() {
               onClick={handleCheckout}
               disabled={cart.length === 0 || showCheckout}
             >
-              {showCheckout ? "Оформляем..." : "Оформить заказ"}
+              {showCheckout ? 'Оформляем...' : 'Оформить заказ'}
             </button>
           </div>
         </div>

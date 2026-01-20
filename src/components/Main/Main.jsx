@@ -1,7 +1,7 @@
-import { Header } from "../Header/Header.jsx";
-import { ProductList } from "../ProductList/ProductList.jsx";
-import { Cart } from "../Cart/Cart.jsx";
-import "./main.css";
+import { Header } from '../Header/Header.jsx';
+import { ProductList } from '../ProductList/ProductList.jsx';
+import { Cart } from '../Cart/Cart.jsx';
+import './main.css';
 
 export function Main() {
   return (
