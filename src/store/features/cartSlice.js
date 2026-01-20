@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { updateCartCalculations } from '../../utils/updateCartCalculations';
 
 const initialState = {
   cart: [],
@@ -20,19 +21,13 @@ const cartSlice = createSlice({
         state.cart.push({ ...product, quantity: 1 });
       }
 
-      state.cartCount = state.cart.reduce(
-        (total, item) => total + item.quantity,
-        0
-      );
+      updateCartCalculations(state);
     },
 
     removeFromCart: (state, action) => {
       state.cart = state.cart.filter((item) => item.id !== action.payload);
 
-      state.cartCount = state.cart.reduce(
-        (total, item) => total + item.quantity,
-        0
-      );
+      updateCartCalculations(state);
     },
 
     updateQuantity: (state, action) => {
@@ -43,14 +38,7 @@ const cartSlice = createSlice({
         item.quantity = quantity;
       }
 
-      state.cartCount = state.cart.reduce(
-        (total, item) => total + item.quantity,
-        0
-      );
-    },
-
-    setErrorCart: (state, action) => {
-      state.error = action.payload;
+      updateCartCalculations(state);
     },
 
     clearCart: (state) => {
@@ -68,4 +56,4 @@ export const {
   clearCart,
 } = cartSlice.actions;
 
-export const cartReducers = cartSlice.reducer;
+export const cartReducer = cartSlice.reducer;

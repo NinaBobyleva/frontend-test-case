@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { productsReducers } from './features/productsSlice';
-import { userReducers } from './features/userSlice.js';
-import { cartReducers } from './features/cartSlice';
+import { productsReducer } from './features/productsSlice';
+import { userReducer } from './features/userSlice.js';
+import { cartReducer } from './features/cartSlice';
 
 export const selectProducts = (state) => state.products.products;
 export const selectCart = (state) => state.cart.cart;
@@ -12,9 +12,9 @@ export const selectLoading = (state) => state.products.loading;
 
 export const store = configureStore({
   reducer: {
-    products: productsReducers,
-    user: userReducers,
-    cart: cartReducers,
+    products: productsReducer,
+    user: userReducer,
+    cart: cartReducer,
   }
 });
 

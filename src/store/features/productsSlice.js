@@ -24,4 +24,4 @@ export const {
   setLoading,
 } = productsSlice.actions;
 
-export const productsReducers = productsSlice.reducer;
+export const productsReducer = productsSlice.reducer;

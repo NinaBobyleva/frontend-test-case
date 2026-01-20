@@ -18,4 +18,4 @@ export const {
   setUser,
 } = userSlice.actions;
 
-export const userReducers = userSlice.reducer;
+export const userReducer = userSlice.reducer;

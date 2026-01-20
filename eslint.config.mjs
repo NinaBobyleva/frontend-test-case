@@ -35,7 +35,6 @@ export default [
       "no-unused-vars": "error",
       "no-undef": "error",
       semi: ["error", "always"],
-      quotes: ["error", "single"],
       indent: ["error", 2],
 
       "react/react-in-jsx-scope": "off",
